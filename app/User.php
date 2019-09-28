@@ -14,6 +14,12 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
+    }
+    
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -26,4 +32,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+        public function foods(){
+            return $this->hasMany(\App\Food::class, 'user_id', 'id');
+        }
+    
 }

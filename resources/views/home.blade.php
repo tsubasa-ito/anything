@@ -15,6 +15,7 @@
                     @endif
 
                     You are logged in!
+                    <a href="{{ route('food.create')}}">oooo</a>
                 </div>
             </div>
         </div>

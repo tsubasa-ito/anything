@@ -18,19 +18,19 @@ class CreateFoodsTable extends Migration
 
             $table->integer('user_id')->unsigned()->index();
 
-            $table->integer('foodid_one')->unsigned()->nullable()->index();
-            $table->integer('foodid_two')->unsigned()->nullable()->index();
-            $table->integer('foodid_three')->unsigned()->nullable()->index();
-            $table->integer('foodid_four')->unsigned()->nullable()->index();
-            $table->integer('foodid_five')->unsigned()->nullable()->index();
+            $table->integer('categoryid_one')->unsigned()->nullable()->index();
+            $table->integer('categoryid_two')->unsigned()->nullable()->index();
+            $table->integer('categoryid_three')->unsigned()->nullable()->index();
+            $table->integer('categoryid_four')->unsigned()->nullable()->index();
+            $table->integer('categoryid_five')->unsigned()->nullable()->index();
 
             $table->string('comment')->nullable();
             
-            $table->foreign('foodid_one')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreign('foodid_two')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreign('foodid_three')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreign('foodid_four')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreign('foodid_five')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('categoryid_one')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('categoryid_two')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('categoryid_three')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('categoryid_four')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('categoryid_five')->references('id')->on('categories')->onDelete('cascade');
             
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Food;
 use Illuminate\Http\Request;
 
 class FoodController extends Controller
@@ -23,6 +24,7 @@ class FoodController extends Controller
      */
     public function create()
     {
+        
         return view('foods.create', [
         ]);
     }
@@ -35,7 +37,11 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $food = new Food;
+        $input = $request->only($food->getFillable());
+        $food = $food->create($input);
+
+        return redirect('/home');
     }
 
     /**

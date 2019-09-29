@@ -23,14 +23,14 @@
                         <h5 class="card-title">カテゴリー：{{ $food->category_five->category_name }}</h5>
                         <h5 class="card-title">投稿者：{{ $food->user->name }}</h5>
                         <p class="card-text">{{ $food->comment }}</p>
-                    <a href="{{ route('food.edit', $food->id )}}" class="btn btn-primary">編集</a>
-                    @if (Auth::id() == $food->user_id)
-                        <form action="{{ route('food.destroy', $food->id) }}" method="POST">
+                        @if (Auth::id() == $food->user_id)
+                            <a href="{{ route('food.edit', $food->id )}}" class="btn btn-primary">編集</a>
+                            <form action="{{ route('food.destroy', $food->id) }}" method="POST">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn btn-danger btn-sm">削除</button>
-                        </form>
-                    @endif
+                            </form>
+                        @endif
                     </div>
                   </div>
                 @endforeach
@@ -40,3 +40,4 @@
     </div>
 </div>
 @endsection
+    

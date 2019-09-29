@@ -11,11 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
+Route::get('/', 'FoodController@index');
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/food', 'FoodController');
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/food', 'FoodController', ['except' => ['index']]);

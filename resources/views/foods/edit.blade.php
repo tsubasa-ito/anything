@@ -1,7 +1,7 @@
 @extends('layouts.app')
-
 @section('content')
-<div class="card-header">Food</div>
+    
+<div class="card-header">{{ $food->updated_at }}日の希望ごはん編集</div>
 <div class="card-body">
     @if (session('status'))
         <div class="alert alert-success" role="alert">
@@ -19,12 +19,13 @@
                     </ul>
                 </div>
             @endif
-            <form action="{{ route('food.store') }}" method="POST">
-                {{ csrf_field() }}
+            <form action="{{ route('food.update', $food->id) }}" method="POST">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="_method" value="PUT">
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">category1</label>
+                    <label>category1</label>
                     <select class="form-control" name="categoryid_one">
-                        @include('components.food_select')
+                        @include('components.old_food_select')
                     </select>
                 </div>
                 <div class="form-group">
@@ -53,7 +54,7 @@
                 </div>
                 <div class="form-group">
                     <label for="comment">Comment:</label>
-                    <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
+                    <textarea class="form-control" name="comment" id="comment" rows="3">{{ old('comment') ?: $food->comment }}</textarea>
                 </div>
 
                 <input type="hidden" name="user_id" value="{{ Auth::id() }}">
@@ -63,5 +64,4 @@
         </div>
       </div>
 </div>
-
 @endsection

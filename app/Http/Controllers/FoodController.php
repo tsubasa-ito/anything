@@ -8,18 +8,19 @@ use Illuminate\Http\Request;
 class FoodController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $foods = Food::all();
+        // modelで$fillableの下で関数にして許可したものを使う宣言を変数に入れる
+        $foods->load('user', 'category_one', 'category_two', 'category_three', 'category_four', 'category_five', );
+        return view('foods.index', [
+            'foods' => $foods,
+        ]);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -30,8 +31,6 @@ class FoodController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -41,12 +40,10 @@ class FoodController extends Controller
         $input = $request->only($food->getFillable());
         $food = $food->create($input);
 
-        return redirect('/home');
+        return redirect('/');
     }
 
     /**
-     * Display the specified resource.
-     *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -56,36 +53,47 @@ class FoodController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $food = Food::find($id);
+        return view('foods.edit', [
+            'food' => $food,
+        ]);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $food = Food::find($id);
+        if (\Auth::id() === $food->user_id) {
+            $food->categoryid_one = $request->categoryid_one;
+            $food->categoryid_two = $request->categoryid_two;
+            $food->categoryid_three = $request->categoryid_three;
+            $food->categoryid_four = $request->categoryid_four;
+            $food->categoryid_five = $request->categoryid_five;
+            $food->comment = $request->comment;
+            $food->save();
+        }
+        return redirect('/');
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $food = Food::find($id);
+        if (\Auth::id() === $food->user_id) {
+            $food->delete();
+        }
+        return redirect('/');
     }
 }

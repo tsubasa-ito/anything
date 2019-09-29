@@ -15,7 +15,7 @@
                     @endif
 
                     You are logged in!
-                    <a href="{{ route('food.create')}}">oooo</a>
+                    <a href="{{ route('food.create')}}">create</a>
                 </div>
             </div>
         </div>

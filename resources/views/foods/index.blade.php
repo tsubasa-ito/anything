@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+{{-- user page --}}
+@if (Auth::check())
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -39,5 +41,64 @@
         </div>
     </div>
 </div>
+@else
+{{-- guest page --}}
+<div class="container">
+        <img class="png" src="http://placehold.jp/1000x600.png">
+</div>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<p>damy</p>
+<footer class="footer mt-auto py-3">
+    <div class="container">
+        <span class="text-muted">ここには固定フッタのコンテンツを配置。</span>
+    </div>
+</footer>    
+
+@endif
 @endsection
-    
+<style>
+    .png {
+        width: 100%;
+        text-align: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>

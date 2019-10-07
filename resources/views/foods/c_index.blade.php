@@ -68,20 +68,5 @@
         _window.trigger('scroll');
     </script>
     <style>
-        /* SP版 */
-        @media screen and (max-width: 1024px) {
-            .container { padding-top: 70px; }
-        }
-        /* PC版 */
-        @media screen and (min-width: 1024px) {
-            .container { 
-                padding-top: 70px;
-            }
-
-            .my_card.s_fixed{
-                position: fixed;
-                min-width: 512px;
-            }
-        }
     </style>    
 @endsection        

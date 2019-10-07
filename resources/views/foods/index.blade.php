@@ -95,20 +95,6 @@
 @endif
 @endsection
 <style>
-    
-    /* SP */
-    @media screen and (max-width: 1024px) {
-        .container { padding-top: 70px; }
-    }
-
-    /* PC */
-    @media screen and (min-width: 1024px) {
-        .container { 
-            padding-top: 70px;
-        }
-    }
-
-
     .png {
         width: 100%;
         text-align: center;

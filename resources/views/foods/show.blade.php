@@ -45,15 +45,4 @@
 </div>
 @endsection
 <style>
-    /* SP */
-    @media screen and (max-width: 1024px) {
-        .container { padding-top: 70px; }
-    }
-    /* PC */
-    @media screen and (min-width: 1024px) {
-        .container { 
-            padding-top: 70px;
-        }
-    }
-
 </style>

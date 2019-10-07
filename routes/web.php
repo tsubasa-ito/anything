@@ -16,3 +16,4 @@ Route::get('/', 'FoodController@index');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/food', 'FoodController', ['except' => ['index']]);
+Route::get('/compare/{id}', 'FoodController@compare_index')->name('food.compare');

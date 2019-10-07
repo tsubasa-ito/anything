@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" style="background-color:#C0C3C6;">
     <div class="card-header">Food</div>
     <div class="card-body">
         @if (session('status'))
@@ -66,3 +66,15 @@
     </div>
 </div>
 @endsection
+<style>
+    /* SP */
+    @media screen and (max-width: 1024px) {
+        .container { padding-top: 70px; }
+    }
+    /* PC */
+    @media screen and (min-width: 1024px) {
+        .container { 
+            padding-top: 70px;
+        }
+    }
+</style>

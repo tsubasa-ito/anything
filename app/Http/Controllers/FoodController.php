@@ -12,7 +12,7 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $foods = Food::all();
+        $foods = Food::orderBy('id','desc')->get();
         // modelで$fillableの下で関数にして許可したものを使う宣言を変数に入れる
         $foods->load('user', 'category_one', 'category_two', 'category_three', 'category_four', 'category_five', );
         return view('foods.index', [
@@ -47,9 +47,11 @@ class FoodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Food $food)
     {
-        //
+        return view('foods.show', [
+            'food' => $food,
+        ]);
     }
 
     /**
@@ -96,4 +98,19 @@ class FoodController extends Controller
         }
         return redirect('/');
     }
+
+
+    public function compare_index($id)
+    {
+        $foods = Food::orderBy('id','desc')->get();//自分以外のユーザIDのものを持ってくる→そのためには、多対多の関係を作る？
+        $foods->load('user', 'category_one', 'category_two', 'category_three', 'category_four', 'category_five', );
+
+        $my_food = Food::find($id);
+
+        return view('foods.c_index', [
+            'foods' => $foods,
+            'my_food' => $my_food
+        ]);
+    }
+
 }

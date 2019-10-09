@@ -29,6 +29,9 @@ class Food extends Model
     public function category_five(){
         return $this->belongsTo(\App\Category::class, 'categoryid_five');
     }
+    public function tags(){
+        return $this->belongsToMany(\App\Tag::class);
+    }
 
 
 }

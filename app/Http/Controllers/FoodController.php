@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Food;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class FoodController extends Controller
@@ -12,12 +13,24 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $foods = Food::orderBy('id','desc')->get();
-        // modelで$fillableの下で関数にして許可したものを使う宣言を変数に入れる
-        $foods->load('user', 'category_one', 'category_two', 'category_three', 'category_four', 'category_five', );
-        return view('foods.index', [
-            'foods' => $foods,
-        ]);
+        $q = \Request::query();
+        // queryにタグが入る場合
+        if(isset($q['tag_name'])){
+            $foods = Food::latest()->where('comment', 'like', "%{$q['tag_name']}%")->paginate(3);
+            $foods->load('user', 'category_one', 'category_two', 'category_three', 'category_four', 'category_five','tags' );
+
+            return view('foods.index', [
+                'foods' => $foods,
+                'tag_name' => $q['tag_name'],
+            ]);
+        }else{ //普通ののindex
+            $foods = Food::latest()->paginate(5);
+            // modelで$fillableの下で関数にして許可したものを使う宣言を変数に入れる
+            $foods->load('user', 'category_one', 'category_two', 'category_three', 'category_four', 'category_five','tags' );
+            return view('foods.index', [
+                'foods' => $foods,
+            ]);
+        }
     }
 
     /**
@@ -35,10 +48,22 @@ class FoodController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         $food = new Food;
         $input = $request->only($food->getFillable());
+
+        preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u', $request->comment, $match);
+        $tags = [];
+        foreach ($match[1] as $tag) {
+            $found = Tag::firstOrCreate(['tag_name' => $tag]);
+            array_push($tags, $found);
+        }
+        $tag_ids = [];
+        foreach ($tags as $tag) {
+            array_push($tag_ids, $tag['id']);
+        }
         $food = $food->create($input);
+        $food->tags()->attach($tag_ids);
 
         return redirect('/');
     }

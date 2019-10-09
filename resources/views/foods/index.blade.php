@@ -17,6 +17,13 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <h5 class="card-title">{{ $food->updated_at }}のご飯</h5>
+                            <h5 class="card-title">
+                                @foreach ($food->tags as $tag)
+                                    <a href="{{route('food.index', ['tag_name'=>$tag->tag_name]) }}">
+                                        #{{ $tag->tag_name }}
+                                    </a>
+                                @endforeach
+                            </h5>
                             <h5 class="card-title">投稿者：{{ $food->user->name }}</h5>
                             <h5 class="card-title">カテゴリー：{{ $food->category_one->category_name }}</h5>
                             <h5 class="card-title">カテゴリー：{{ $food->category_two->category_name }}</h5>

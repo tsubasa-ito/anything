@@ -12,7 +12,7 @@
 */
 
 Auth::routes();
-Route::get('/', 'FoodController@index');
+Route::get('/', 'FoodController@index')->name('food.index');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/food', 'FoodController', ['except' => ['index']]);

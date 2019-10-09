@@ -3,9 +3,9 @@
 <div class="container" style="background-color:#C0C3C6;">
     <div class="row">
         <div class="col-md-6">
-            <div class="my_card">
-                <div class="card-header">あなたのご飯希望</div>
+            <div class="my_card mb-3">
                 <div class="card border-info">
+                <div class="card-header">あなたのご飯希望</div>
                     <div class="card-body">
                         <h5 class="card-title">投稿者：{{ $my_food->user->name }}</h5>
                         <h5 class="card-title">{{ $my_food->updated_at }}のご飯</h5>
@@ -22,7 +22,6 @@
         <div class="col-md-6">
             <div class="copmapre_card">
                 <div class="card-header max-line">比較するものを選んでください</div>
-            
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">

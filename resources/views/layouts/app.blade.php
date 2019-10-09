@@ -30,9 +30,19 @@
         .navbar{
            margin-bottom: -22px;
         }
-                /* SP版 */
-                @media screen and (max-width: 1024px) {
-            .container { padding-top: 70px; }
+        .navbar-brand {
+            background: url('/image/logo.png') no-repeat left center;
+            background-size: contain;
+            height: 50px;
+            width: 250px;
+            margin-right: -30px;
+        }           
+
+        /* SP版 */
+        @media screen and (max-width: 1024px) {
+            .container {
+                 padding-top: 70px;
+            }
         }
         /* PC版 */
         @media screen and (min-width: 1024px) {
@@ -56,7 +66,8 @@
         <header>
             <nav class="navbar navbar-expand-md navbar-light" style="background-color:#FABA5F;">
                 <!-- Branding Image -->
-                    <a class="navbar-brand text-white" href="{{ url('/') }}">Anything</a>
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                    </a>
                     <button class="navbar-toggler text-white justify-content-end" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="ナビゲーションの切替">
                         <span class="navbar-toggler-icon text-white"></span>
                     </button>

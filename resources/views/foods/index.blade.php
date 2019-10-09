@@ -44,7 +44,7 @@
 @else
 {{-- guest page --}}
 <div class="container">
-        <img class="png" src="http://placehold.jp/1000x600.png">
+        <img class="png" src="{{ asset('/image/top.jpg') }}" alt="トップ画像">
 </div>
 <p>damy</p>
 <p>damy</p>
@@ -97,8 +97,8 @@
 <style>
     .png {
         width: 100%;
-        text-align: center;
+        /* text-align: center;
         background-size: cover;
-        background-repeat: no-repeat;
+        background-repeat: no-repeat; */
     }
 </style>

@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!--Font Awesome5-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-
+    <!--Font Awsome animation-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
     <!--自作CSS -->
     <style type="text/css">
         header{
@@ -76,7 +77,7 @@
                         <div class="navbar-left">
                             <ul class="nav navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link text-white mr-2" href="https://tsubasa-microposts.herokuapp.com/"><i class="fab fa-github mr-1"></i>Microposts</a>
+                                    <a class="nav-link text-white mr-2" href="https://tsubasa-microposts.herokuapp.com/"><i class="fab fa-laravel fa-fw mr-1"></i>Microposts</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-white mr-2" href="https://twitter.com/basabasa8770"><i class="fab fa-twitter mr-1"></i>Twitter</a>
@@ -88,22 +89,23 @@
                             <ul class="navbar-nav">
                                 @guest
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('login') }}">ログイン</a>
+                                        <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-sign-in-alt fa-fw mr-1"></i>ログイン</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">登録</a>
+                                        <a class="nav-link" href="{{ route('register') }}"><i class="fas fa-registered fa-fw mr-1"></i>登録</a>
                                     </li>
                                 @else
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        {{ Auth::user()->name }}
+                                        <i class="fas fa-user-circle fa-lg fa-fw mr-1" style="color:#6FB4DE;"></i>{{ Auth::user()->name }}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('food.create')}}">CREATE</a>
+                                        <a class="dropdown-item" href="{{ route('food.create')}}"><i class="fas fa-plus-circle fa-fw mr-1"></i>CREATE</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
+                                                 <i class="fas fa-sign-out-alt fa-fw mr-1"></i>
                                             ログアウト
                                         </a>
                                     </div>

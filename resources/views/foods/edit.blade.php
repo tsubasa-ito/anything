@@ -60,7 +60,7 @@
                 
                     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">決定</button>
                 </form>
             </div>
           </div>

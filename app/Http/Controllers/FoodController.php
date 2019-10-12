@@ -63,7 +63,7 @@ class FoodController extends Controller
             array_push($tag_ids, $tag['id']);
         }
         $food = $food->create($input);
-        $food->tags()->attach($tag_ids);
+        $food->tags()->sync($tag_ids);
 
         return redirect('/');
     }
@@ -106,6 +106,19 @@ class FoodController extends Controller
             $food->categoryid_four = $request->categoryid_four;
             $food->categoryid_five = $request->categoryid_five;
             $food->comment = $request->comment;
+
+            preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u', $request->comment, $match);
+            $tags = [];
+            foreach ($match[1] as $tag) {
+                $found = Tag::firstOrCreate(['tag_name' => $tag]);
+                array_push($tags, $found);
+            }
+            // dd($tags);
+            $tag_ids = [];
+            foreach ($tags as $tag) {
+                array_push($tag_ids, $tag['id']);
+            }
+            $food->tags()->sync($tag_ids);
             $food->save();
         }
         return redirect('/');

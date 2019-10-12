@@ -16,8 +16,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <!--Font Awsome animation-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
+    <!--Google Font Kosugi Maru-->
+    <link href="https://fonts.googleapis.com/css?family=Kosugi+Maru&display=swap" rel="stylesheet">
     <!--自作CSS -->
     <style type="text/css">
+        *{
+            /* Google Font Kosugi Maru */
+            font-family: 'Kosugi Maru', sans-serif;
+        }
         header{
             width: 100%;
             z-index: 99;

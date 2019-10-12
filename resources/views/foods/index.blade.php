@@ -149,7 +149,6 @@
         text-align: center;
     }
     .table > tbody > tr > td{
-        font-family: "Raleway", sans-serif;
         font-size: 14px;
         line-height: 1.8;
         color: #636b6f;

@@ -81,62 +81,63 @@
 @else
 {{-- guest page --}}
 <div class="container">
-        <img class="png" src="{{ asset('/image/top.jpg') }}" alt="トップ画像">
+    <img class="img" src="{{ asset('/image/top.jpg') }}" alt="トップ画像">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+            <p>damy</p>
+        </div>
+    </div>
 </div>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
-<p>damy</p>
 <footer class="footer mt-auto py-3">
-    <div class="container">
-        <span class="text-muted">ここには固定フッタのコンテンツを配置。</span>
+    <div class="container"  style="text-align: center;">
+        <span class="text-muted">© 2019 TSUBASA ITO.</span>
     </div>
 </footer>    
 
 @endif
 @endsection
 <style>
-    .png {
+    .img {
         width: 100%;
-        /* text-align: center;
-        background-size: cover;
-        background-repeat: no-repeat; */
     }
     .fa-carrot {
         color: orange;
@@ -180,5 +181,8 @@
         border: 15px solid transparent;
         border-bottom: 15px solid #9ACBB7;
         z-index: 0;
+    }
+    footer {
+        background-color:#224B8B;
     }
 </style>

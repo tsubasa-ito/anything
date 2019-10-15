@@ -62,9 +62,8 @@
                             @if (Auth::id() == $food->user_id)
                                 <div>
                                     <a href="{{ route('food.compare', $food->id)}}" class="btn btn-success btn-sm"><i class="fas fa-arrows-alt-h fa-fw"></i>これで比較する</a>
-                                    <a href="{{ route('food.show', $food->id )}}" class="btn btn-dark btn-sm">詳細</a>
                                     <a href="{{ route('food.edit', $food->id )}}" class="btn btn-primary btn-sm"><i class="far fa-edit fa-fw"></i>編集</a>
-                                    <form action="{{ route('food.destroy', $food->id) }}" method="POST">
+                                    <form class="delete_btn" action="{{ route('food.destroy', $food->id) }}" method="POST">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt fa-fw"></i>削除</button>
@@ -180,6 +179,9 @@
         border: 15px solid transparent;
         border-bottom: 15px solid #9ACBB7;
         z-index: 0;
+    }
+    .delete_btn {
+        display:inline-block;
     }
     footer {
         background-color:#224B8B;

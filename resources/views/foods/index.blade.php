@@ -14,7 +14,8 @@
                         </div>
                     @endif
                     @foreach ($foods as $food)
-                    <div class="card mb-3">
+                    <div class="card mb-3 card_flame">
+                        <a class="card_flame_link" href="{{ route('food.show', $food->id )}}"></a>
                         <div class="card-body">
                             <div class="d-flex">
                                 <h5 class="card-title mr-3">{{ $food->updated_at }}のご飯</h5>
@@ -25,7 +26,7 @@
                             <h5 class="card-title">
                                 <i class="fas fa-tag fa-fw mr-3"></i>
                                 @foreach ($food->tags as $tag)
-                                    <a href="{{route('food.index', ['tag_name'=>$tag->tag_name]) }}" class="mr-2">
+                                    <a href="{{route('food.index', ['tag_name'=>$tag->tag_name]) }}" class="mr-2 card_inlink">
                                         #{{ $tag->tag_name }}
                                     </a>
                                 @endforeach
@@ -61,9 +62,9 @@
                             </div>
                             @if (Auth::id() == $food->user_id)
                                 <div>
-                                    <a href="{{ route('food.compare', $food->id)}}" class="btn btn-success btn-sm"><i class="fas fa-arrows-alt-h fa-fw"></i>これで比較する</a>
-                                    <a href="{{ route('food.edit', $food->id )}}" class="btn btn-primary btn-sm"><i class="far fa-edit fa-fw"></i>編集</a>
-                                    <form class="delete_btn" action="{{ route('food.destroy', $food->id) }}" method="POST">
+                                    <a href="{{ route('food.compare', $food->id)}}" class="btn btn-success btn-sm card_inlink"><i class="fas fa-arrows-alt-h fa-fw"></i>これで比較する</a>
+                                    <a href="{{ route('food.edit', $food->id )}}" class="btn btn-primary btn-sm card_inlink"><i class="far fa-edit fa-fw"></i>編集</a>
+                                    <form class="delete_btn inlink" action="{{ route('food.destroy', $food->id) }}" method="POST">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt fa-fw"></i>削除</button>
@@ -137,6 +138,23 @@
 <style>
     .img {
         width: 100%;
+    }
+    .card_flame {
+        position: relative;
+        z-index: 1; /* リンクの重なり順 */
+    }
+    .card_flame_link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        text-indent:-999px;
+        z-index: 2; /* リンクの重なり順 */
+    }
+    .card_flame a.card_inlink {
+        position: relative; /*「別リンク」は普通に配置するため */
+        z-index: 3; /* リンクの重なり順 */
     }
     .fa-carrot {
         color: orange;

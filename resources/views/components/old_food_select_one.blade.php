@@ -1,4 +1,4 @@
-<option selected="">選択する</option>
+<option selected="" value="">選択する</option>
 <option value="1" @if( old('categoryid_one')==1) selected @endif>日本料理</option>
 <option value="2" @if( old('categoryid_one')==2) selected @endif>寿司</option>
 <option value="3" @if( old('categoryid_one')==3) selected @endif>魚介料理・海鮮料理</option>

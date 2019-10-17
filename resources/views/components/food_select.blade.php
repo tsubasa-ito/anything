@@ -1,4 +1,4 @@
-    <option selected="">選択する</option>
+    <option selected="" value="">選択する</option>
     <option value="1">日本料理</option>
     <option value="2">寿司</option>
     <option value="3">魚介料理・海鮮料理</option>

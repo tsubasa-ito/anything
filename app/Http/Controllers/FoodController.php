@@ -49,6 +49,15 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {   
+        $validate_rule =[
+            'categoryid_one' => 'required',
+            'categoryid_two' => 'required',
+            'categoryid_three' => 'required',
+            'categoryid_four' => 'required',
+            'categoryid_five' => 'required',
+            
+        ];
+        $this ->validate($request, $validate_rule);
         $food = new Food;
         $input = $request->only($food->getFillable());
 
@@ -98,6 +107,15 @@ class FoodController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validate_rule =[
+            'categoryid_one' => 'required',
+            'categoryid_two' => 'required',
+            'categoryid_three' => 'required',
+            'categoryid_four' => 'required',
+            'categoryid_five' => 'required',
+            
+        ];
+        $this ->validate($request, $validate_rule);
         $food = Food::find($id);
         if (\Auth::id() === $food->user_id) {
             $food->categoryid_one = $request->categoryid_one;

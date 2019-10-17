@@ -26,31 +26,31 @@
                     <div class="form-group">
                         <label>category1</label>
                         <select class="form-control" name="categoryid_one">
-                            @include('components.old_food_select')
+                            @include('components.old_food_select_one')
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">category2</label>
                         <select class="form-control" name="categoryid_two">
-                            @include('components.food_select')
+                            @include('components.old_food_select_two')
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">category3</label>
                         <select class="form-control" name="categoryid_three">
-                            @include('components.food_select')
+                            @include('components.old_food_select_three')
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">category4</label>
                         <select class="form-control" name="categoryid_four">
-                            @include('components.food_select')
+                            @include('components.old_food_select_four')
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">category5</label>
                         <select class="form-control" name="categoryid_five">
-                            @include('components.food_select')
+                            @include('components.old_food_select_five')
                         </select>
                     </div>
                     <div class="form-group">

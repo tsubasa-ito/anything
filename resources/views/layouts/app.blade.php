@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Anything</title>
+    <title>Anything.OK</title>
 
     <!-- ファビコン -->
     <link rel="icon" href="/image/favicon.ico">
@@ -23,49 +23,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
     <!--Google Font Kosugi Maru-->
     <link href="https://fonts.googleapis.com/css?family=Kosugi+Maru&display=swap" rel="stylesheet">
+
+    {{-- Muse-ui --}}
+    {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic"> --}}
+    <link rel="stylesheet" href="https://cdn.bootcss.com/material-design-icons/3.0.1/iconfont/material-icons.css">
+    <link href="{{ mix('css/app.css') }}" type="text/css" rel="stylesheet" />
     <!--自作CSS -->
     <style type="text/css">
         *{
             /* Google Font Kosugi Maru */
             font-family: 'Kosugi Maru', sans-serif;
         }
-        header{
-            width: 100%;
-            z-index: 99;
-            position: absolute;
-        }
-        .fixed{
-            position: fixed;
-            top: 0px;
-            left: 0;
-        }
-        .navbar{
-           margin-bottom: -22px;
-        }
-        .navbar-brand {
-            background: url('/image/logo.png') no-repeat left center;
-            background-size: contain;
-            height: 50px;
-            width: 250px;
-            margin-right: -30px;
-        }           
-
         /* SP版 */
         @media screen and (max-width: 1024px) {
-            .container {
-                 padding-top: 70px;
             }
         }
         /* PC版 */
         @media screen and (min-width: 1024px) {
-            .container { 
-                padding-top: 70px;
-            }
-
-            .my_card.s_fixed{
-                position: fixed;
-                min-width: 512px;
-            }
         }
 
     </style>
@@ -75,92 +49,14 @@
 </head>
 <body>
     <div id="app">
-        <header>
-            <nav class="navbar navbar-expand-md navbar-light" style="background-color:#FABA5F;">
-                <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                    </a>
-                    <button class="navbar-toggler text-white justify-content-end" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="ナビゲーションの切替">
-                        <span class="navbar-toggler-icon text-white"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        {{-- light side --}}
-                        <div class="navbar-left">
-                            <ul class="nav navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link text-white mr-2" href="https://tsubasa-microposts.herokuapp.com/"><i class="fab fa-laravel fa-fw mr-1"></i>Microposts</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white mr-2" href="https://twitter.com/basabasa8770"><i class="fab fa-twitter mr-1"></i>Twitter</a>
-                                </li>
-                            </ul>
-                        </div>
-                        {{-- right side --}}
-                        <div class="navbar-right mr-3">
-                            <ul class="navbar-nav">
-                                @guest
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-sign-in-alt fa-fw mr-1"></i>ログイン</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}"><i class="fas fa-registered fa-fw mr-1"></i>登録</a>
-                                    </li>
-                                @else
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-user-circle fa-lg fa-fw mr-1" style="color:#6FB4DE;"></i>{{ Auth::user()->name }}
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('food.create')}}"><i class="fas fa-plus-circle fa-fw mr-1"></i>CREATE</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                                 <i class="fas fa-sign-out-alt fa-fw mr-1"></i>
-                                            ログアウト
-                                        </a>
-                                    </div>
-                                </li>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                                @endguest
-                            </ul>
-                        </div>
-                    </div>
-            </nav>
-        </header>
+           <p>app.blade.php</p>
+        <router-view></router-view>
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
-    @yield('content')
-
-    <script>
-        // ニョキっと出るメニュー
-        $(function() {
-            var headNav = $("header");
-            //scrollだけだと読み込み時困るのでloadも追加
-            $(window).on('load scroll', function () {
-                //現在の位置が500px以上かつ、クラスfixedが付与されていない時
-                if($(this).scrollTop() > 500 && headNav.hasClass('fixed') == false) {
-                    //headerの高さ分上に設定
-                    headNav.css({"top": '-100px'});
-                    //クラスfixedを付与
-                    headNav.addClass('fixed');
-                    //位置を0に設定し、アニメーションのスピードを指定
-                    headNav.animate({"top": 0},600);
-                }
-                //現在の位置が300px以下かつ、クラスfixedが付与されている時にfixedを外す
-                else if($(this).scrollTop() < 300 && headNav.hasClass('fixed') == true){
-                    headNav.removeClass('fixed');
-                }
-            });
-        });
-    </script>
 </body>
 </html>

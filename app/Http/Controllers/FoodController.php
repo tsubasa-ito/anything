@@ -27,9 +27,7 @@ class FoodController extends Controller
             $foods = Food::latest()->paginate(5);
             // modelで$fillableの下で関数にして許可したものを使う宣言を変数に入れる
             $foods->load('user', 'category_one', 'category_two', 'category_three', 'category_four', 'category_five','tags' );
-            return view('foods.index', [
-                'foods' => $foods,
-            ]);
+            return response()->json($foods);
         }
     }
 
@@ -39,8 +37,6 @@ class FoodController extends Controller
     public function create()
     {
         
-        return view('foods.create', [
-        ]);
     }
 
     /**
